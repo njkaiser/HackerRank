@@ -24,12 +24,16 @@ public:
 		return real + A - B*ans;
 	}
 
+
   static int getLoad()
   {
 		return load;
 	}
 };
+
+
 int Server::load = 0;
+
 
 int main() {
 	int T; cin >> T;
@@ -38,20 +42,22 @@ int main() {
 		cin >> A >> B;
 
     /* Enter your code here. */
-    Server server1;
+    //Server server1;
+		long long result;
     try
     {
-      server1.compute(A, B);
+      result = Server::compute(A, B);
+			cout << result << endl;
     }
-    catch(std::bad_alloc)
+    catch(std::bad_alloc& ba)
     {
       cout << "Not enough memory" << endl;
     }
-    catch(std::invalid_argument e)
+    catch(const std::invalid_argument& e)
     {
-      cout << "Exception: " << e.what() << endl;//A is negative" << endl;
+      cout << "Exception: " << e.what() << endl;
     }
-    catch(exception S)
+    catch(std::exception S)
     {
       cout << "Exception: " << S.what() << endl;
     }
